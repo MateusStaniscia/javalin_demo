@@ -2,6 +2,7 @@ package br.edu.ifpr.pgua.eic.tads;
 
 import br.edu.ifpr.pgua.eic.tads.controllers.CadastroController;
 import br.edu.ifpr.pgua.eic.tads.controllers.IndexController;
+import br.edu.ifpr.pgua.eic.tads.controllers.ListaController;
 import br.edu.ifpr.pgua.eic.tads.models.Cadastro;
 import br.edu.ifpr.pgua.eic.tads.utils.JavalinUtils;
 import io.javalin.Javalin;
@@ -18,6 +19,8 @@ public class App {
 
         IndexController indexController = new IndexController();
         CadastroController cadastroController = new CadastroController(cadastro);
+        ListaController listaController = new ListaController(cadastro);
+
 
         app.get("/", indexController.get);
         app.get("/ola",indexController.ola);
@@ -25,5 +28,7 @@ public class App {
         app.get("/cadastro",cadastroController.get);
         app.post("/cadastro",cadastroController.post);
         
+        app.get("/lista",listaController.get);
+
     }
 }
